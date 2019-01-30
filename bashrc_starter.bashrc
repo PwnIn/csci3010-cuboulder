@@ -32,13 +32,13 @@ function git_indicator {
     # hearts content 
 
     if [[ ! $git_status =~ "Working directory " ]]; then
-      echo -e $GIT_STATUS_DIRTY
+      echo -ne $GIT_STATUS_DIRTY
     elif [[ $git_status =~ "Your branch is ahead of" ]]; then
-      echo -e $GIT_STATUS_NEW
+      echo -ne $GIT_STATUS_NEW
     elif [[ $git_status =~ "Nothing to commit" ]]; then
-      echo -e $GIT_STATUS_CLEAN
+      echo -ne $GIT_STATUS_CLEAN
     else
-      echo -e $USER_CYAN
+      echo -ne $USER_CYAN
     fi
 }
 
