@@ -19,18 +19,6 @@ USER_CYAN="\033[0;87m"
 function COLOR_OUT {
     local git_status="$(git status 2> /dev/null)"  # redirect stderr to /dev/null -- we just need it in this variable
 
-    #echo $git_status # will help you decide what strings to test for, remove it later
-
-    echo -ne "Xingyu Zhou" # as an example, see how echoing text here changes your prompt
-
-    # insert strings to test for in the if statements below
-    # example of using an "and" (&&)
-    # =~ means "contains"
-    # ! means "not"
-    # be very very careful of spacing in bash-land!
-    # the following if statements are examples -- fill them in, rearrange them, etc to your
-    # hearts content 
-
     if [[ ! $git_status =~ "Working directory clean" ]]; then
       echo -ne $GIT_STATUS_DIRTY
     elif [[ $git_status =~ "Your branch is ahead of" ]]; then
