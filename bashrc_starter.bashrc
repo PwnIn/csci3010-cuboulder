@@ -16,7 +16,7 @@ USER_WHITE="\033[0;37m"
 USER_CYAN="\033[0;87m"
 
 
-function git_indicator {
+function COLOR_OUT {
     local git_status="$(git status 2> /dev/null)"  # redirect stderr to /dev/null -- we just need it in this variable
 
     #echo $git_status # will help you decide what strings to test for, remove it later
@@ -59,7 +59,7 @@ function git_branch {
 
 # edit to your heart's content
 PS1="\[$USER_WHITE\]\n[\W]"          # base of your PS 1
-PS1+="\[\$(git_indicator)\]"        # indicates git status
+PS1+="\[\$(COLOR_OUT)\]"        # indicates git status
 PS1+="\$(git_branch)"           # prints current branch
 PS1+="\[$DEFAULT_COLOR\] blah \$\[$RESET\] " # prints out "blah $" -- change this!
 #echo $PS1
