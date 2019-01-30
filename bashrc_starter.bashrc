@@ -10,7 +10,7 @@ alias ls="ls -G"  # colorized ls
 # For example, this is the color reset code
 RESET="\033[0m"
 DEFAULT_COLOR="\033[01;31m"
-GIT_STATUS_CLEAN="\033[00;33m"
+GIT_STATUS_CLEAN="\033[0;31m"
 GIT_STATUS_DIRTY="\033[38;5;95m"
 GIT_STATUS_NEW="\033[00;31"
 USER_WHITE="\033[0;37m"
