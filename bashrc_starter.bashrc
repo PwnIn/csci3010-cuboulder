@@ -2,7 +2,7 @@
 alias egrep="egrep --color"
 alias grep="grep --color"
 alias ls="ls -G"  # colorized ls
-
+username=$USER
 
 # A decent stack exchange on color codes: https://unix.stackexchange.com/questions/124407/what-color-codes-can-i-use-in-my-ps1-prompt
 # Recommendation: define named variables, then use those variables
@@ -22,7 +22,7 @@ function git_indicator {
 
     #echo $git_status # will help you decide what strings to test for, remove it later
 
-    echo -ne "pwd" # as an example, see how echoing text here changes your prompt
+    echo -ne "Xingyu Zhou" # as an example, see how echoing text here changes your prompt
 
     # insert strings to test for in the if statements below
     # example of using an "and" (&&)
@@ -59,7 +59,7 @@ function git_branch {
 }
 
 # edit to your heart's content
-PS1="\[$USER_WHITE\]\n[\W]"          # base of your PS 1
+PS1="\[$USER_WHITE\]\n$USER[\W]"          # base of your PS 1
 PS1+="\[\$(git_indicator)\]"        # indicates git status
 PS1+="\$(git_branch)"           # prints current branch
 PS1+="\[$DEFAULT_COLOR\] blah \$\[$RESET\] " # prints out "blah $" -- change this!
