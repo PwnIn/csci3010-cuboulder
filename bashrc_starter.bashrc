@@ -31,7 +31,7 @@ function git_indicator {
     # the following if statements are examples -- fill them in, rearrange them, etc to your
     # hearts content 
 
-    if [[ ! $git_status =~ "Working directory " ]]; then
+    if [[ ! $git_status =~ "Working directory clean" ]]; then
       echo -ne $GIT_STATUS_DIRTY
     elif [[ $git_status =~ "Your branch is ahead of" ]]; then
       echo -ne $GIT_STATUS_NEW
