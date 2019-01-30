@@ -20,9 +20,9 @@ USER_CYAN="\033[0;87m"
 function git_indicator {
     local git_status="$(git status 2> /dev/null)"  # redirect stderr to /dev/null -- we just need it in this variable
 
-    echo $git_status # will help you decide what strings to test for, remove it later
+    #echo $git_status # will help you decide what strings to test for, remove it later
 
-    echo -ne "bam" # as an example, see how echoing text here changes your prompt
+    echo -ne "pwd" # as an example, see how echoing text here changes your prompt
 
     # insert strings to test for in the if statements below
     # example of using an "and" (&&)
