@@ -12,13 +12,13 @@ DEFAULT_COLOR="\033[01;31m"
 GIT_STATUS_CLEAN="\033[0;31m"
 GIT_STATUS_DIRTY="\033[38;5;95m"
 GIT_STATUS_NEW="\033[00;31"
-USER_WHITE="\033[01;31m"
+USER_WHITE="\033[0;37m"
 USER_CYAN="\033[0;87m"
 
 
 function COLOR_OUT {
-    local git_status="$(git status 2> /dev/null)"  # redirect stderr to /dev/null -- we just need it in this variable
-
+    local git_status="$(git status 2> /dev/null)"  
+    
     if [[ ! $git_status =~ "Working directory clean" ]]; then
       echo -ne $GIT_STATUS_DIRTY
     elif [[ $git_status =~ "Your branch is ahead of" ]]; then
@@ -46,7 +46,7 @@ function git_branch {
 }
 
 # edit to your heart's content
-PS1="\[$USER_WHITE\]\n[\W]"          # base of your PS 1
+PS1="\[$USER_WHITE\]\n[\W] test"          # base of your PS 1
 PS1+="\[\$(COLOR_OUT)\]"        # indicates git status
 PS1+="\$(git_branch)"           # prints current branch
 PS1+="\[$DEFAULT_COLOR\] blah \$\[$RESET\] " # prints out "blah $" -- change this!
