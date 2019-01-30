@@ -62,7 +62,7 @@ PS1="\[$USER_WHITE\]\n[\W]"          # base of your PS 1
 PS1+="\[\$(git_indicator)\]"        # indicates git status
 PS1+="\$(git_branch)"           # prints current branch
 PS1+="\[$DEFAULT_COLOR\] blah \$\[$RESET\] " # prints out "blah $" -- change this!
-echo $PS1
+#echo $PS1
 
 # don't forget to export it at the end!
 # make sure that you run source ~/.bashrc to see the changes from your PS1!
