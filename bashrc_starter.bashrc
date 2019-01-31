@@ -9,24 +9,31 @@ alias ls="ls -G"  # colorized ls
 # For example, this is the color reset code
 RESET="\033[0m"
 DEFAULT_COLOR="\033[01;31m"
-GIT_STATUS_CLEAN="\033[0;31m"
-GIT_STATUS_DIRTY="\033[38;5;95m"
-GIT_STATUS_NEW="\033[0;33m"
-USER_WHITE="\033[0;37m"
-USER_CYAN="\033[0;34m"
+GIT_STATUS_CLEAN_GREEN="\033[0;32m"
+GIT_STATUS_DIRTY_RED="\033[0;31m"
+GIT_STATUS_NEW_CYAN="\033[0;87m"
+USER_BLUE="\033[0;34m"
+
+COLOR_RED="\033[0;31m"
+COLOR_YELLOW="\033[0;33m"
+COLOR_GREEN="\033[0;32m"
+COLOR_OCHRE="\033[38;5;95m"
+COLOR_BLUE="\033[0;34m"
+COLOR_WHITE="\033[0;37m"
+COLOR_RESET="\033[0m"
 
 
-function COLOR_OUT {
+function git_indicator {
     local git_status="$(git status 2> /dev/null)"  
     
-    if [[ ! $git_status =~ "working tree clean" && "nothing to commit" ]]; then
-      echo -ne $USER_CYAN
+    if [[ ! $git_status =~ "working tree clean" ]]; then
+      echo -ne $GIT_STATUS_DIRTY_RED
     elif [[ $git_status =~ "Your branch is ahead of" ]]; then
-      echo -ne $GIT_STATUS_NEW
+      echo -ne $GIT_STATUS_NEW_CYAN
     elif [[ $git_status =~ "nothing to commit" ]]; then
-      echo -ne $GIT_STATUS_CLEAN
+      echo -ne $GIT_STATUS_CLEAN_GREEN
     else
-      echo -ne $USER_CYAN
+      echo -ne $USER_BLUE
     fi
 }
 
@@ -45,13 +52,13 @@ function git_branch {
     fi
 }
 
+
 # edit to your heart's content
 PS1="\[$USER_WHITE\]\n[\W] test"          # base of your PS 1
-PS1+="\[\$(COLOR_OUT)\]"        # indicates git status
+PS1+="\[\$(git_indicator)\]"        # indicates git status
 PS1+="\$(git_branch)"           # prints current branch
-PS1+="\[$DEFAULT_COLOR\] blah \$\[$RESET\] " # prints out "blah $" -- change this!
+PS1+="\[$DEFAULT_COLOR\]\$\[$RESET\] " # prints out "blah $" -- change this!
 #echo $PS1
-
 # don't forget to export it at the end!
 # make sure that you run source ~/.bashrc to see the changes from your PS1!
 export PS1
