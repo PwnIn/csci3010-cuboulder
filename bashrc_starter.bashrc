@@ -13,15 +13,7 @@ GIT_STATUS_CLEAN_GREEN="\033[0;32m"
 GIT_STATUS_DIRTY_RED="\033[0;31m"
 GIT_STATUS_NEW_CYAN="\033[0;87m"
 USER_BLUE="\033[0;34m"
-
-COLOR_RED="\033[0;31m"
-COLOR_YELLOW="\033[0;33m"
-COLOR_GREEN="\033[0;32m"
-COLOR_OCHRE="\033[38;5;95m"
-COLOR_BLUE="\033[0;34m"
-COLOR_WHITE="\033[0;37m"
-COLOR_RESET="\033[0m"
-
+USER_WHITE="\033[0;37m"
 
 function git_indicator {
     local git_status="$(git status 2> /dev/null)"  
@@ -37,7 +29,6 @@ function git_indicator {
     fi
 }
 
-
 function git_branch {
     local git_status="$(git status 2> /dev/null)"
     local on_branch="On branch ([^${IFS}]*)"
@@ -52,13 +43,11 @@ function git_branch {
     fi
 }
 
-
 # edit to your heart's content
-PS1="\[$USER_WHITE\]\n[\W] test"          # base of your PS 1
+PS1="\[$USER_WHITE\]Xingyu Zhou\n[\W]"          # base of your PS 1
 PS1+="\[\$(git_indicator)\]"        # indicates git status
 PS1+="\$(git_branch)"           # prints current branch
 PS1+="\[$DEFAULT_COLOR\]\$\[$RESET\] " # prints out "blah $" -- change this!
-#echo $PS1
 # don't forget to export it at the end!
 # make sure that you run source ~/.bashrc to see the changes from your PS1!
 export PS1
